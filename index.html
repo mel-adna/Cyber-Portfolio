@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mohamed - Cybersecurity enthusiast and Computer Science student at 1337 Morocco">
+    <meta name="keywords" content="cybersecurity, 1337, 42 network, C programming, ethical hacking, security analyst, cyber defense">
+    <meta name="author" content="Mohamed">
+    <meta name="theme-color" content="#0f172a">
+    <meta property="og:title" content="Mohamed | 1337 Student & Security Enthusiast">
+    <meta property="og:description" content="Cybersecurity enthusiast and Computer Science student at 1337 Morocco (42 Network)">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://i.imgur.com/2xaV5GE.jpg">
+    <title>Mohamed | 1337 Student & Security Enthusiast</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- JetBrains Mono font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/1005/1005141.png" type="image/x-icon">
+</head>
+<body class="light-mode">
+    <!-- Mobile navigation overlay -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+
+    <!-- Dark mode toggle -->
+    <div class="theme-switch-wrapper">
+        <label class="theme-switch" for="checkbox" aria-label="Toggle dark mode">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider round">
+                <i class="fas fa-sun"></i>
+                <i class="fas fa-moon"></i>
+            </div>
+        </label>
+    </div>
+    
+    <!-- Scroll to top button -->
+    <button id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    
+    <!-- Loading animation -->
+    <div class="loader-wrapper">
+        <div class="loader"></div>
+        <p class="loading-text">Starting secure session...</p>
+    </div>
+
+    <header>
+        <div class="logo"><span class="cyber-text">[</span> Mohamed<span class="highlight">@1337</span> <span class="cyber-text">]</span></div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#password-tester">Security Tools</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="menu-toggle" aria-label="Toggle menu">
+            <i class="fas fa-bars"></i>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="terminal-container">
+                <div class="terminal-header">
+                    <span class="terminal-title">~/mohamed@1337:~</span>
+                    <div class="terminal-controls">
+                        <span class="terminal-button"></span>
+                        <span class="terminal-button"></span>
+                        <span class="terminal-button"></span>
+                    </div>
+                </div>
+                <div class="terminal-body">
+                    <div class="terminal-line">$ whoami</div>
+                    <div class="terminal-response typing-terminal">
+                        <span class="highlight typing-text">Mohamed</span>
+                    </div>
+                    <div class="terminal-line">$ cat skills.txt</div>
+                    <div class="terminal-response">C | Linux | Cybersecurity | Web Development</div>
+                    <div class="terminal-line">$ ./about.sh</div>
+                    <div class="terminal-response">Computer Science student at 1337 Morocco (42 Network)</div>
+                    <div class="terminal-line">$ ls -la projects/</div>
+                    <div class="terminal-response">
+                        drwxr-xr-x  2 mohamed mohamed 4096 Jan 10 20:23 <span class="highlight">Libft</span><br>
+                        drwxr-xr-x  2 mohamed mohamed 4096 Jan 10 20:23 <span class="highlight">Get_Next_Line</span><br>
+                        drwxr-xr-x  2 mohamed mohamed 4096 Jan 10 20:23 <span class="highlight">ft_printf</span><br>
+                        drwxr-xr-x  2 mohamed mohamed 4096 Jan 10 20:23 <span class="highlight">Born2beRoot</span><br>
+                        drwxr-xr-x  2 mohamed mohamed 4096 Jan 10 20:23 <span class="highlight">Minishell</span> [in progress]
+                    </div>
+                    <div class="terminal-line terminal-cursor">$</div>
+                </div>
+            </div>
+            <div class="cta-buttons">
+                <a href="#projects" class="btn primary"><i class="fas fa-code"></i> View Projects</a>
+                <a href="#contact" class="btn secondary"><i class="fas fa-paper-plane"></i> Contact Me</a>
+            </div>
+        </div>
+        <div class="cyber-grid"></div>
+        <div class="hero-particles" id="heroParticles"></div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="https://avatars.githubusercontent.com/u/mel-adna" alt="Mohamed" onerror="this.src='https://avatars.githubusercontent.com/u/583231?v=4'">
+                    <div class="security-badge">
+                        <i class="fas fa-terminal"></i>
+                        <span>1337 Student</span>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <p>Hello! I'm <strong>Mohamed</strong>, a passionate Computer Science student at <a href="https://1337.ma" target="_blank" class="highlight-link">1337 Morocco</a> (part of the 42 Network), with a keen interest in cybersecurity and low-level programming.</p>
+                    <p>I enjoy solving complex problems and building robust, secure systems. Currently, I'm focusing on mastering C programming, shell scripting, and exploring cybersecurity concepts through practical projects.</p>
+                    <div class="about-facts">
+                        <div class="fact-item">
+                            <i class="fas fa-code"></i>
+                            <div>
+                                <h4>Programming</h4>
+                                <p>C, Shell scripting, HTML/CSS/JS</p>
+                            </div>
+                        </div>
+                        <div class="fact-item">
+                            <i class="fas fa-language"></i>
+                            <div>
+                                <h4>Languages</h4>
+                                <p>Arabic (Darija), English</p>
+                            </div>
+                        </div>
+                        <div class="fact-item">
+                            <i class="fas fa-laptop-code"></i>
+                            <div>
+                                <h4>Environments</h4>
+                                <p>Debian, Kali Linux, Zsh</p>
+                            </div>
+                        </div>
+                        <div class="fact-item">
+                            <i class="fas fa-user-graduate"></i>
+                            <div>
+                                <h4>Learning</h4>
+                                <p>Cybersecurity, Web Development</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="btn download-cv"><i class="fas fa-file-download"></i> Download CV</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-container">
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fas fa-terminal"></i></div>
+                    <h3>C Programming</h3>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 85%"></div>
+                    </div>
+                    <ul class="skill-details">
+                        <li>Memory Management</li>
+                        <li>Data Structures</li>
+                        <li>System Programming</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fab fa-linux"></i></div>
+                    <h3>Linux/Unix</h3>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 80%"></div>
+                    </div>
+                    <ul class="skill-details">
+                        <li>Shell Scripting (Zsh)</li>
+                        <li>System Administration</li>
+                        <li>Debian & Kali Linux</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>Cybersecurity</h3>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 75%"></div>
+                    </div>
+                    <ul class="skill-details">
+                        <li>Network Security</li>
+                        <li>Vulnerability Assessment</li>
+                        <li>Security Best Practices</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fas fa-code"></i></div>
+                    <h3>Web Development</h3>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 65%"></div>
+                    </div>
+                    <ul class="skill-details">
+                        <li>HTML/CSS</li>
+                        <li>JavaScript</li>
+                        <li>WordPress</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="education">
+        <div class="container">
+            <h2 class="section-title">Education & Achievements</h2>
+            <div class="edu-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>1337 School Morocco (42 Network)</h3>
+                        <div class="timeline-date">Current</div>
+                        <p>Pursuing Computer Science education with focus on project-based peer learning.</p>
+                        <div class="achievement-badges">
+                            <div class="achievement">
+                                <i class="fas fa-trophy"></i>
+                                <span>Passed Rank 2 Exam</span>
+                            </div>
+                            <div class="achievement">
+                                <i class="fas fa-award"></i>
+                                <span>Completed Core Curriculum Projects</span>
+                            </div>
+                            <div class="achievement">
+                                <i class="fas fa-star"></i>
+                                <span>Born2beRoot with Bonus</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Self-Learning: Cybersecurity</h3>
+                        <div class="timeline-date">Ongoing</div>
+                        <p>Self-directed learning in cybersecurity fundamentals, ethical hacking, and network security.</p>
+                        <div class="learning-resources">
+                            <span class="resource-badge">TryHackMe</span>
+                            <span class="resource-badge">HackTheBox</span>
+                            <span class="resource-badge">PortSwigger Academy</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Career Goals</h3>
+                        <div class="timeline-date">Future</div>
+                        <p>Aiming to join Morocco Digital Academy (UM6P) to specialize in cybersecurity and contribute to digital security initiatives.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">My Projects</h2>
+            <div class="project-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="1337">1337 Projects</button>
+                <button class="filter-btn" data-filter="security">Security</button>
+                <button class="filter-btn" data-filter="web">Web Dev</button>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card" data-category="1337">
+                    <div class="project-header">
+                        <div class="project-icon"><i class="fas fa-book-open"></i></div>
+                        <div class="project-infobar">
+                            <span>C</span>
+                            <span>Completed</span>
+                        </div>
+                    </div>
+                    <img src="images/projects/libft.jpg" alt="Libft Project" 
+                         onerror="this.onerror=null; this.src='images/projects/placeholder.jpg'; this.classList.add('img-error');" 
+                         loading="lazy">
+                    <div class="project-info">
+                        <h3>Libft</h3>
+                        <p>My own implementation of standard C library functions with additional utilities. The foundation of all 1337 C projects.</p>
+                        <div class="tech-stack">
+                            <span>C</span>
+                            <span>Makefile</span>
+                            <span>Memory Management</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/mel-adna" class="project-link" target="_blank"><i class="fab fa-github"></i> Github</a>
+                            <a href="#" class="project-link project-details-btn" data-project="libft"><i class="fas fa-info-circle"></i> Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card" data-category="1337">
+                    <div class="project-header">
+                        <div class="project-icon"><i class="fas fa-file-alt"></i></div>
+                        <div class="project-infobar">
+                            <span>C</span>
+                            <span>Completed</span>
+                        </div>
+                    </div>
+                    <img src="images/projects/gnl.jpg" alt="Get Next Line" 
+                         onerror="this.onerror=null; this.src='images/projects/placeholder.jpg'; this.classList.add('img-error');" 
+                         loading="lazy">
+                    <div class="project-info">
+                        <h3>Get Next Line</h3>
+                        <p>Function that reads a line from a file descriptor, handling various edge cases and memory management efficiently.</p>
+                        <div class="tech-stack">
+                            <span>C</span>
+                            <span>File I/O</span>
+                            <span>Dynamic Memory</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/mel-adna" class="project-link" target="_blank"><i class="fab fa-github"></i> Github</a>
+                            <a href="#" class="project-link project-details-btn" data-project="gnl"><i class="fas fa-info-circle"></i> Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card" data-category="1337">
+                    <div class="project-header">
+                        <div class="project-icon"><i class="fas fa-print"></i></div>
+                        <div class="project-infobar">
+                            <span>C</span>
+                            <span>Completed</span>
+                        </div>
+                    </div>
+                    <img src="images/projects/printf.jpg" alt="ft_printf" 
+                         onerror="this.onerror=null; this.src='images/projects/placeholder.jpg'; this.classList.add('img-error');" 
+                         loading="lazy">
+                    <div class="project-info">
+                        <h3>ft_printf</h3>
+                        <p>Recreation of the printf function from libc, handling various format specifiers, flags, and conversion modifiers.</p>
+                        <div class="tech-stack">
+                            <span>C</span>
+                            <span>Variadic Functions</span>
+                            <span>String Formatting</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/mel-adna" class="project-link" target="_blank"><i class="fab fa-github"></i> Github</a>
+                            <a href="#" class="project-link project-details-btn" data-project="printf"><i class="fas fa-info-circle"></i> Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card" data-category="1337 security">
+                    <div class="project-header">
+                        <div class="project-icon"><i class="fas fa-server"></i></div>
+                        <div class="project-infobar">
+                            <span>System Admin</span>
+                            <span>Completed</span>
+                        </div>
+                    </div>
+                    <img src="images/projects/born2beroot.jpg" alt="Born2beRoot" 
+                         onerror="this.onerror=null; this.src='images/projects/placeholder.jpg'; this.classList.add('img-error');" 
+                         loading="lazy">
+                    <div class="project-info">
+                        <h3>Born2beRoot</h3>
+                        <p>Setting up a secure Linux server with strict security policies, user management, partitioning, and system monitoring.</p>
+                        <div class="tech-stack">
+                            <span>Debian</span>
+                            <span>System Administration</span>
+                            <span>Security Policies</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link project-details-btn" data-project="b2br"><i class="fas fa-info-circle"></i> Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card" data-category="1337">
+                    <div class="project-header">
+                        <div class="project-icon"><i class="fas fa-terminal"></i></div>
+                        <div class="project-infobar">
+                            <span>C</span>
+                            <span>In Progress</span>
+                        </div>
+                    </div>
+                    <img src="images/projects/minishell.jpg" alt="Minishell" 
+                         onerror="this.onerror=null; this.src='images/projects/placeholder.jpg'; this.classList.add('img-error');" 
+                         loading="lazy">
+                    <div class="project-info">
+                        <h3>Minishell</h3>
+                        <p>Creating a simple shell that handles commands, environment variables, redirections, and pipes similar to bash.</p>
+                        <div class="tech-stack">
+                            <span>C</span>
+                            <span>Process Management</span>
+                            <span>Parsing</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/mel-adna" class="project-link" target="_blank"><i class="fab fa-github"></i> Github</a>
+                            <a href="#" class="project-link project-details-btn" data-project="minishell"><i class="fas fa-info-circle"></i> Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card" data-category="web">
+                    <div class="project-header">
+                        <div class="project-icon"><i class="fas fa-globe"></i></div>
+                        <div class="project-infobar">
+                            <span>Web</span>
+                            <span>Completed</span>
+                        </div>
+                    </div>
+                    <img src="images/projects/portfolio.jpg" alt="Portfolio Website" 
+                         onerror="this.onerror=null; this.src='images/projects/placeholder.jpg'; this.classList.add('img-error');" 
+                         loading="lazy">
+                    <div class="project-info">
+                        <h3>Portfolio Website</h3>
+                        <p>This responsive portfolio website built with HTML, CSS, and JavaScript to showcase my projects and skills.</p>
+                        <div class="tech-stack">
+                            <span>HTML5</span>
+                            <span>CSS3</span>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fas fa-code"></i> Current Site</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Added certifications section -->
+    <section id="certifications" class="certifications">
+        <div class="container">
+            <h2 class="section-title">Certifications & Training</h2>
+            <div class="cert-container">
+                <div class="cert-card">
+                    <div class="cert-logo">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="cert-content">
+                        <h3>CompTIA Security+</h3>
+                        <p class="cert-status">In Progress</p>
+                        <p>Comprehensive cybersecurity certification covering network security, threats and vulnerabilities, cryptography, and more.</p>
+                    </div>
+                </div>
+
+                <div class="cert-card">
+                    <div class="cert-logo">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <div class="cert-content">
+                        <h3>Ethical Hacking Fundamentals</h3>
+                        <p class="cert-status">Completed</p>
+                        <p>Practical training in penetration testing methodologies, vulnerability assessment, and ethical hacking techniques.</p>
+                    </div>
+                </div>
+
+                <div class="cert-card">
+                    <div class="cert-logo"></div>
+                        <i class="fas fa-bug"></i>
+                    </div>
+                    <div class="cert-content">
+                        <h3>Web Application Security</h3>
+                        <p class="cert-status">Completed</p>
+                        <p>Specialized training in identifying and mitigating common web vulnerabilities including XSS, CSRF, and SQL injection.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Password strength tester section -->
+    <section id="password-tester" class="password-tester">
+        <div class="container">
+            <h2 class="section-title">Security Tools</h2>
+            <div class="tools-tabs">
+                <button class="tool-tab active" data-tool="password">Password Checker</button>
+                <button class="tool-tab" data-tool="hash">Hash Generator</button>
+                <button class="tool-tab" data-tool="encoder">Text Encoder</button>
+            </div>
+            
+            <div class="tool-content active" id="password-tool">
+                <h3 class="tool-title">Password Strength Tester</h3>
+                <div class="password-tester-container">
+                    <div class="password-input-container">
+                        <input type="password" id="passwordInput" placeholder="Enter a password to test" class="password-input" aria-label="Password input">
+                        <button id="togglePassword" class="toggle-password" aria-label="Toggle password visibility">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <div class="strength-container">
+                        <div class="strength-bar">
+                            <div class="strength-meter" id="strengthMeter"></div>
+                        </div>
+                        <div class="strength-text" id="strengthText">Password strength</div>
+                    </div>
+                    <div class="password-feedback" id="passwordFeedback"></div>
+                    <div class="password-tips">
+                        <h4>Password Security Tips</h4>
+                        <ul>
+                            <li>Use a minimum of 12 characters</li>
+                            <li>Include uppercase and lowercase letters</li>
+                            <li>Add numbers and special characters</li>
+                            <li>Avoid common patterns and dictionary words</li>
+                            <li>Use a different password for each account</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tool-content" id="hash-tool">
+                <h3 class="tool-title">Hash Generator</h3>
+                <div class="hash-tool-container">
+                    <div class="tool-input-container">
+                        <textarea id="hashInput" placeholder="Enter text to hash" class="tool-input" rows="4"></textarea>
+                    </div>
+                    <div class="hash-options">
+                        <label>
+                            <input type="radio" name="hashType" value="md5" checked> MD5
+                        </label>
+                        <label>
+                            <input type="radio" name="hashType" value="sha1"> SHA-1
+                        </label>
+                        <label>
+                            <input type="radio" name="hashType" value="sha256"> SHA-256
+                        </label>
+                    </div>
+                    <button id="generateHash" class="btn primary">Generate Hash</button>
+                    <div class="result-container">
+                        <input type="text" id="hashResult" class="result-display" readonly placeholder="Hash result will appear here">
+                        <button id="copyHash" class="btn-icon" aria-label="Copy hash">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tool-content" id="encoder-tool">
+                <h3 class="tool-title">Text Encoder/Decoder</h3>
+                <div class="encoder-tool-container">
+                    <div class="tool-input-container">
+                        <textarea id="encoderInput" placeholder="Enter text to encode/decode" class="tool-input" rows="4"></textarea>
+                    </div>
+                    <div class="encoder-options">
+                        <label>
+                            <input type="radio" name="encoderType" value="base64" checked> Base64
+                        </label>
+                        <label>
+                            <input type="radio" name="encoderType" value="uri"> URL Encoding
+                        </label>
+                        <label>
+                            <input type="radio" name="encoderType" value="hex"> Hexadecimal
+                        </label>
+                    </div>
+                    <div class="action-buttons">
+                        <button id="encodeText" class="btn primary">Encode</button>
+                        <button id="decodeText" class="btn secondary">Decode</button>
+                    </div>
+                    <div class="result-container">
+                        <input type="text" id="encoderResult" class="result-display" readonly placeholder="Result will appear here">
+                        <button id="copyEncoder" class="btn-icon" aria-label="Copy result">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project modal for displaying details -->
+    <div class="project-modal" id="projectModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-body">
+                <h2 id="modalTitle">Project Details</h2>
+                <div class="modal-details" id="modalDetails">
+                    <!-- Content will be inserted by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <p>Contact form preferred →</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-github"></i>
+                        <div>
+                            <h3>GitHub</h3>
+                            <a href="https://github.com/mel-adna" target="_blank" class="contact-link">github.com/mel-adna</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Location</h3>
+                            <p>Morocco</p>
+                        </div>
+                    </div>
+                    <div class="pgp-key">
+                        <h3>PGP Key</h3>
+                        <button class="btn copy-pgp" id="copyPgpKey">
+                            <i class="fas fa-key"></i> Copy PGP Public Key
+                        </button>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://github.com/mel-adna" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <input type="text" id="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="subject" placeholder="Subject" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>Mohamed <span class="highlight">@1337</span></h3>
+                    <p>Computer Science student and cybersecurity enthusiast</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Connect With Me</h4>
+                    <div class="social-icons">
+                        <a href="https://github.com/mel-adna" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Mohamed. Built with <i class="fas fa-heart"></i> and <i class="fas fa-coffee"></i></p>
+                <p class="visitor-counter">You are visitor #<span id="visitorCount">1337</span> in the matrix</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
