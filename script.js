@@ -37,18 +37,20 @@ let isWaiting = false;
 function toggleDarkMode() {
     document.body.classList.toggle('dark-mode');
     localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+    
+    // Force refresh the matrix effect when toggling modes
+    const heroParticles = document.getElementById('heroParticles');
+    if (heroParticles) {
+        heroParticles.innerHTML = '';
+        enhancedMatrixBackground();
+    }
 }
 
 // Check user preference for dark mode
 if (localStorage.getItem('darkMode') === 'true') {
     document.body.classList.add('dark-mode');
     themeToggle.checked = true;
-} else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches && localStorage.getItem('darkMode') === null) {
-    document.body.classList.add('dark-mode');
-    themeToggle.checked = true;
-}
-
-themeToggle.addEventListener('change', toggleDarkMode);
+} // Added missing closing brace here
 
 // Enhanced typing animation for terminal effect
 function typeText() {
@@ -351,87 +353,132 @@ sections.forEach(section => {
     sectionObserver.observe(section);
 });
 
-// Matrix-like background animation for hero section
-function createMatrixBackground() {
-    const cyberGrid = document.querySelector('.cyber-grid');
+// Enhanced Matrix animation for hero section
+function enhancedMatrixBackground() {
+    const heroParticles = document.getElementById('heroParticles');
+    if (!heroParticles) return;
     
-    if (!cyberGrid) return;
+    // Matrix characters - simpler set for better compatibility and rendering
+    const matrixChars = "アイウエオカキクケコサシスセソタチツテト01234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     
-    // Add occasional glowing dots
-    setInterval(() => {
-        const dot = document.createElement('div');
-        dot.classList.add('matrix-dot');
-        
-        // Random position
-        const posX = Math.floor(Math.random() * cyberGrid.offsetWidth);
-        const posY = Math.floor(Math.random() * cyberGrid.offsetHeight);
-        
-        dot.style.left = `${posX}px`;
-        dot.style.top = `${posY}px`;
-        
-        // Random size and opacity
-        const size = Math.floor(Math.random() * 3) + 2;
-        const opacity = Math.random() * 0.5 + 0.3;
-        
-        dot.style.width = `${size}px`;
-        dot.style.height = `${size}px`;
-        dot.style.opacity = opacity;
-        
-        cyberGrid.appendChild(dot);
-        
-        // Remove dot after animation
+    // Device-aware settings
+    const isMobile = window.innerWidth <= 768;
+    const density = isMobile ? 10 : 20; // Adjusted for better visibility
+    
+    // Clear any existing characters first
+    heroParticles.innerHTML = '';
+    
+    // Create initial matrix columns with proper spacing
+    for (let i = 0; i < density; i++) {
         setTimeout(() => {
-            dot.remove();
-        }, 2000);
-    }, 100);
-}
-
-// Terminal typing simulation
-function simulateTerminal() {
-    const terminalLines = document.querySelectorAll('.terminal-line');
-    const terminalResponses = document.querySelectorAll('.terminal-response:not(.typing-terminal)');
-    const typingTerminal = document.querySelector('.typing-terminal');
-    
-    let lineIndex = 0;
-    
-    // Initially hide all lines and responses
-    terminalLines.forEach((line, i) => {
-        if (i > 0) line.style.opacity = "0";
-    });
-    
-    terminalResponses.forEach(response => {
-        response.style.opacity = "0";
-    });
-    
-    if (typingTerminal) typingTerminal.style.opacity = "0";
-    
-    // Simulate typing
-    function typeNextLine() {
-        if (lineIndex >= terminalLines.length) return;
-        
-        terminalLines[lineIndex].style.opacity = "1";
-        
-        setTimeout(() => {
-            // Show response if available
-            if (terminalResponses[lineIndex]) {
-                terminalResponses[lineIndex].style.opacity = "1";
-            }
-            
-            // If it's the typing terminal (with the typing animation)
-            if (lineIndex === 0 && typingTerminal) {
-                typingTerminal.style.opacity = "1";
-                typeText();
-            }
-            
-            lineIndex++;
-            if (lineIndex < terminalLines.length) {
-                setTimeout(typeNextLine, 1000);
-            }
-        }, 500);
+            createMatrixColumn(heroParticles, matrixChars, isMobile);
+        }, i * 150); // More staggered for visual clarity
     }
     
-    setTimeout(typeNextLine, 1000);
+    // Add digital rain effect continuously
+    setInterval(() => {
+        if (Math.random() > 0.7) { // Lower probability for better performance
+            createMatrixColumn(heroParticles, matrixChars, isMobile);
+        }
+    }, 500);
 }
+
+function createMatrixColumn(container, chars, isMobile) {
+    const column = document.createElement('div');
+    column.className = 'matrix-column';
+    
+    // Random position and properties with better distribution
+    const posX = Math.floor(Math.random() * container.offsetWidth);
+    const delay = Math.random() * 1.5;
+    const speed = Math.random() * 2 + 2; // Adjusted speed for better visibility
+    const length = isMobile ? 
+        Math.floor(Math.random() * 5) + 3 : 
+        Math.floor(Math.random() * 12) + 6;
+    
+    column.style.left = `${posX}px`;
+    column.style.animationDelay = `${delay}s`;
+    column.style.animationDuration = `${speed}s`;
+    
+    // Add characters to column with proper spacing
+    for (let i = 0; i < length; i++) {
+        const char = document.createElement('div');
+        char.className = 'matrix-character';
+        
+        // Random character from the set
+        const charIndex = Math.floor(Math.random() * chars.length);
+        char.textContent = chars.charAt(charIndex);
+        
+        // First character is brighter (the "head" of the rain drop)
+        if (i === 0) {
+            char.style.color = 'white';
+            char.style.textShadow = '0 0 8px var(--primary-color)';
+            char.style.opacity = '1';
+        } else {
+            // Gradually decrease opacity for trailing characters
+            const opacity = 1 - (i / length * 0.8);
+            char.style.opacity = opacity.toString();
+        }
+        
+        column.appendChild(char);
+    }
+    
+    container.appendChild(column);
+    
+    // Remove after animation completes to prevent memory issues
+    setTimeout(() => {
+        if (column.parentNode === container) {
+            container.removeChild(column);
+        }
+    }, (delay + speed) * 1000 + 500);
+}
+
+// Initialize enhanced matrix background on page load
+window.addEventListener('load', () => {
+    // Hide loader
+    setTimeout(() => {
+        document.body.classList.add('loaded');
+    }, 1000);
+    
+    // Start enhanced matrix animation for hero section
+    setTimeout(() => {
+        enhancedMatrixBackground();
+    }, 1000);
+});
+
+// Add updated CSS to your styles.css or create a style tag in the head
+document.head.insertAdjacentHTML('beforeend', `
+<style>
+.matrix-column {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: -20px;
+    animation: matrixRain linear forwards;
+    z-index: var(--z-background);
+    pointer-events: none;
+}
+
+@keyframes matrixRain {
+    0% { transform: translateY(-100px); opacity: 1; }
+    100% { transform: translateY(100vh); opacity: 0.2; }
+}
+
+.matrix-character {
+    font-size: 16px; 
+    line-height: 1.2;
+    color: var(--primary-color);
+    font-family: monospace; /* Fallback for better compatibility */
+    text-shadow: 0 0 5px var(--primary-color);
+    margin-bottom: 2px;
+    display: block;
+    width: 1em;
+    height: 1em;
+    text-align: center;
+}
+
+/* Other existing styles... */
+</style>
+`);
 
 // Password strength checker
 function checkPasswordStrength(password) {
@@ -581,14 +628,24 @@ window.addEventListener('load', () => {
         document.body.classList.add('loaded');
     }, 1000);
     
+    // Start typing effect
+    if (typingText) {
+        setTimeout(typeText, 1000);
+    }
+    
     // Start cybersecurity animations
     setTimeout(() => {
-        createMatrixBackground();
-        simulateTerminal();
+        enhancedMatrixBackground(); // Changed from createMatrixBackground
+        if (typeof simulateTerminal === 'function') {
+            simulateTerminal();
+        }
     }, 1500);
     
     // Initially show all projects
-    document.querySelector('.filter-btn[data-filter="all"]').classList.add('active');
+    const allProjectsButton = document.querySelector('.filter-btn[data-filter="all"]');
+    if (allProjectsButton) {
+        allProjectsButton.classList.add('active');
+    }
 });
 
 // Security Tools Tab Switching
@@ -798,22 +855,36 @@ function copyToClipboard(element) {
     element.setSelectionRange(0, 99999); // For mobile devices
     
     try {
-        const successful = document.execCommand('copy');
-        if (successful) {
-            const parent = element.parentElement;
-            const copyBtn = parent.querySelector('.btn-icon');
-            
-            if (copyBtn) {
-                const originalHTML = copyBtn.innerHTML;
-                copyBtn.innerHTML = '<i class="fas fa-check"></i>';
-                
-                setTimeout(() => {
-                    copyBtn.innerHTML = originalHTML;
-                }, 1500);
-            }
+        // Use modern clipboard API with fallback
+        if (navigator.clipboard) {
+            navigator.clipboard.writeText(element.value).then(() => {
+                showCopySuccess(element);
+            }).catch(() => {
+                // Fallback
+                document.execCommand('copy');
+                showCopySuccess(element);
+            });
+        } else {
+            // For older browsers
+            document.execCommand('copy');
+            showCopySuccess(element);
         }
     } catch (err) {
         console.error('Could not copy text: ', err);
+    }
+}
+
+function showCopySuccess(element) {
+    const parent = element.parentElement;
+    const copyBtn = parent.querySelector('.btn-icon');
+    
+    if (copyBtn) {
+        const originalHTML = copyBtn.innerHTML;
+        copyBtn.innerHTML = '<i class="fas fa-check"></i>';
+        
+        setTimeout(() => {
+            copyBtn.innerHTML = originalHTML;
+        }, 1500);
     }
 }
 
@@ -843,120 +914,6 @@ function fromHex(hex) {
     }
     return result;
 }
-
-// Enhanced Matrix animation for hero section
-function enhancedMatrixBackground() {
-    const heroParticles = document.getElementById('heroParticles');
-    if (!heroParticles) return;
-    
-    // Matrix characters
-    const matrixChars = "アイウエオカキクケコサシスセソタチツテトナニヌネノマミムメモヤユヨラリルレロワヲン0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    
-    // Device-aware settings
-    const isMobile = window.innerWidth <= 768;
-    const density = isMobile ? 15 : 25; // Fewer characters on mobile
-    
-    // Create matrix columns
-    for (let i = 0; i < density; i++) {
-        createMatrixColumn(heroParticles, matrixChars, isMobile);
-    }
-    
-    // Add digital rain effect
-    setInterval(() => {
-        if (Math.random() > 0.7) {
-            createMatrixColumn(heroParticles, matrixChars, isMobile);
-        }
-    }, 500);
-}
-
-function createMatrixColumn(container, chars, isMobile) {
-    const column = document.createElement('div');
-    column.className = 'matrix-column';
-    
-    // Random position and properties
-    const posX = Math.floor(Math.random() * container.offsetWidth);
-    const delay = Math.random() * 2;
-    const speed = Math.random() * 2 + 1;
-    const length = isMobile ? 
-        Math.floor(Math.random() * 8) + 5 : 
-        Math.floor(Math.random() * 15) + 8;
-    
-    column.style.left = `${posX}px`;
-    column.style.animationDelay = `${delay}s`;
-    column.style.animationDuration = `${speed}s`;
-    
-    // Add characters to column
-    for (let i = 0; i < length; i++) {
-        const char = document.createElement('div');
-        char.className = 'matrix-character';
-        char.textContent = chars.charAt(Math.floor(Math.random() * chars.length));
-        
-        // First character is brighter
-        if (i === 0) {
-            char.style.color = 'white';
-        } else {
-            const opacity = 1 - (i / length);
-            char.style.opacity = opacity;
-        }
-        
-        column.appendChild(char);
-    }
-    
-    container.appendChild(column);
-    
-    // Remove after animation completes
-    setTimeout(() => {
-        column.remove();
-    }, (delay + speed) * 1000 + 1000);
-}
-
-// Initialize enhanced matrix background on page load
-window.addEventListener('load', () => {
-    // ... existing code ...
-    
-    // Start enhanced matrix animation for hero section
-    setTimeout(() => {
-        enhancedMatrixBackground();
-    }, 1500);
-});
-
-// Add this CSS to your styles.css or create a style tag in the head
-document.head.insertAdjacentHTML('beforeend', `
-<style>
-.matrix-column {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    top: -20px;
-    animation: matrixRain linear forwards;
-    z-index: var(--z-background);
-}
-
-@keyframes matrixRain {
-    0% { transform: translateY(-100px); opacity: 1; }
-    100% { transform: translateY(100vh); opacity: 0.2; }
-}
-
-.success-highlight {
-    animation: highlightSuccess 1s ease;
-}
-
-.error-highlight {
-    animation: highlightError 1s ease;
-    color: var(--accent-color) !important;
-}
-
-@keyframes highlightSuccess {
-    0%, 100% { background-color: transparent; }
-    50% { background-color: rgba(0, 255, 65, 0.2); }
-}
-
-@keyframes highlightError {
-    0%, 100% { background-color: transparent; }
-    50% { background-color: rgba(255, 0, 60, 0.2); }
-}
-</style>
-`);
 
 // Create fallback placeholder image
 document.addEventListener('DOMContentLoaded', function() {
@@ -1008,4 +965,46 @@ document.addEventListener('DOMContentLoaded', function() {
     // Preload placeholder to ensure it's available
     const preloadPlaceholder = new Image();
     preloadPlaceholder.src = 'images/projects/placeholder.jpg';
+});
+
+// Skill category filtering
+document.addEventListener('DOMContentLoaded', function() {
+    const skillCategoryTabs = document.querySelectorAll('.skill-category-tab');
+    const skillCards = document.querySelectorAll('.skill-card');
+    
+    if (skillCategoryTabs.length > 0) {
+        skillCategoryTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Update active tab
+                skillCategoryTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                const category = tab.getAttribute('data-category');
+                
+                // Filter skill cards with animation
+                skillCards.forEach(card => {
+                    // Add a glitch effect for cybersecurity theme
+                    card.classList.add('glitch-effect');
+                    
+                    setTimeout(() => {
+                        if (category === 'all' || card.getAttribute('data-category') === category) {
+                            card.style.display = 'block';
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = 'translateY(0)';
+                                card.classList.remove('glitch-effect');
+                            }, 50);
+                        } else {
+                            card.style.opacity = '0';
+                            card.style.transform = 'translateY(20px)';
+                            setTimeout(() => {
+                                card.style.display = 'none';
+                                card.classList.remove('glitch-effect');
+                            }, 300);
+                        }
+                    }, 100);
+                });
+            });
+        });
+    }
 });

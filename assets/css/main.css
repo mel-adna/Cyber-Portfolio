@@ -1,0 +1,256 @@
+/* Base Styles and Variables */
+:root {
+    /* Main colors with improved contrast */
+    --primary-color: #00ff41;
+    --primary-dark: #00cc34;
+    --primary-light: #66ff8c;
+    --accent-color: #ff003c;
+    --highlight-color: #00eeff;
+    
+    /* Dark theme colors with better contrast */
+    --text-color: #ffffff;
+    --text-secondary: #b0b8c1;
+    --bg-color: #0a1624;
+    --card-color: #101c2e;
+    --card-hover: #162639;
+    --dark-color: #050e1a;
+    --gray-color: #9baec8;
+    
+    /* Spacing and sizing - more consistent scale */
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 1.5rem;
+    --space-lg: 2rem;
+    --space-xl: 3rem;
+    --space-xxl: 5rem;
+    
+    --section-padding: var(--space-xxl) 0;
+    --section-padding-mobile: var(--space-xl) 0;
+    --container-max-width: 1200px;
+    --container-padding: var(--space-lg);
+    --border-radius: 8px;
+    --card-gap: var(--space-lg);
+    
+    /* Typography scale - improved for better readability */
+    --font-size-xs: 0.8125rem;   /* 13px */
+    --font-size-sm: 0.9375rem;   /* 15px */
+    --font-size-md: 1.0625rem;   /* 17px - slightly larger base */
+    --font-size-lg: 1.3125rem;   /* 21px */
+    --font-size-xl: 1.625rem;    /* 26px */
+    --font-size-xxl: 2.125rem;   /* 34px */
+    --font-size-xxxl: 2.75rem;   /* 44px */
+    
+    /* Font weights */
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    
+    /* Shadows */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.15);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.2);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.25);
+    
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    
+    /* Z-index layers */
+    --z-background: -1;
+    --z-normal: 1;
+    --z-header: 1000;
+    --z-overlay: 1001;
+    --z-modal: 1002;
+    --z-loader: 9999;
+}
+
+/* CSS Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 100%; /* Base font size */
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) var(--dark-color);
+}
+
+body {
+    font-family: var(--body-font);
+    line-height: 1.7;
+    letter-spacing: 0.02em;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    transition: background-color var(--transition-normal), color var(--transition-normal);
+    position: relative;
+    overflow-x: hidden;
+    min-height: 100vh;
+    font-size: var(--font-size-md); /* Slightly larger base font */
+}
+
+/* Improved scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--dark-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--mono-font);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+code, pre, .terminal-body, .terminal-response {
+    font-family: var(--mono-font);
+    font-size: 0.95rem;
+}
+
+/* Basic Links and Lists */
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+a:hover {
+    color: var(--primary-color);
+}
+
+ul {
+    list-style: none;
+}
+
+/* Container and Common Classes */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--container-padding);
+}
+
+/* Improved typography with better sizing */
+h1 {
+    font-size: clamp(var(--font-size-xxl), 5vw, var(--font-size-xxxl));
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--space-lg);
+    line-height: 1.2;
+}
+
+h2 {
+    font-size: clamp(var(--font-size-xl), 4vw, var(--font-size-xxl));
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--space-md);
+    line-height: 1.25;
+}
+
+h3 {
+    font-size: clamp(var(--font-size-lg), 3vw, var(--font-size-xl));
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--space-sm);
+    line-height: 1.3;
+}
+
+h4 {
+    font-size: clamp(var(--font-size-md), 2vw, var(--font-size-lg));
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--space-xs);
+    line-height: 1.4;
+}
+
+p {
+    margin-bottom: var(--space-md);
+    font-size: clamp(var(--font-size-md), 1.5vw, var(--font-size-lg));
+    line-height: 1.7;
+}
+
+/* Enhanced section title */
+.section-title {
+    font-size: var(--font-size-xxl);
+    margin-bottom: var(--space-xl);
+    text-align: center;
+    position: relative;
+    color: var(--text-color);
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 4px;
+    background: var(--primary-color);
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+    box-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+}
+
+/* Improved helper classes */
+.highlight {
+    color: var(--primary-color);
+    font-weight: var(--font-weight-medium);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.mb-sm { margin-bottom: var(--space-sm); }
+.mb-md { margin-bottom: var(--space-md); }
+.mb-lg { margin-bottom: var(--space-lg); }
+.mb-xl { margin-bottom: var(--space-xl); }
+
+/* Animation settings */
+.animate-fade-in {
+    animation: fadeIn var(--transition-normal) forwards;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    :root {
+        /* Adjust spacing on mobile */
+        --space-lg: 1.75rem;
+        --space-xl: 2.5rem;
+    }
+    
+    body {
+        font-size: var(--font-size-md);
+    }
+    
+    /* Keep text readable on mobile */
+    p, li {
+        font-size: var(--font-size-md);
+    }
+}
+
+@media (max-width: 576px) {
+    h1, h2, h3 {
+        line-height: 1.3;
+    }
+}

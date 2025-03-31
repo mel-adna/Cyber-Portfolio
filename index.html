@@ -86,9 +86,6 @@
                     <div class="terminal-response">Computer Science student at 1337 Morocco (42 Network)</div>
                     <div class="terminal-line">$ ls -la projects/</div>
                     <div class="terminal-response">
-                        drwxr-xr-x  2 mohamed mohamed 4096 Jan 10 20:23 <span class="highlight">Libft</span><br>
-                        drwxr-xr-x  2 mohamed mohamed 4096 Jan 10 20:23 <span class="highlight">Get_Next_Line</span><br>
-                        drwxr-xr-x  2 mohamed mohamed 4096 Jan 10 20:23 <span class="highlight">ft_printf</span><br>
                         drwxr-xr-x  2 mohamed mohamed 4096 Jan 10 20:23 <span class="highlight">Born2beRoot</span><br>
                         drwxr-xr-x  2 mohamed mohamed 4096 Jan 10 20:23 <span class="highlight">Minishell</span> [in progress]
                     </div>
@@ -157,54 +154,76 @@
     <section id="skills" class="skills">
         <div class="container">
             <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-category-tabs">
+                <button class="skill-category-tab active" data-category="all">All Skills</button>
+                <button class="skill-category-tab" data-category="programming">Programming</button>
+                <button class="skill-category-tab" data-category="systems">Systems</button>
+                <button class="skill-category-tab" data-category="security">Security</button>
+            </div>
             <div class="skills-container">
-                <div class="skill-card">
+                <div class="skill-card" data-category="programming">
                     <div class="skill-icon"><i class="fas fa-terminal"></i></div>
                     <h3>C Programming</h3>
-                    <div class="progress-bar">
-                        <div class="progress" style="width: 85%"></div>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 85%"></div>
+                        </div>
+                        <div class="skill-level">Advanced</div>
                     </div>
                     <ul class="skill-details">
                         <li>Memory Management</li>
                         <li>Data Structures</li>
                         <li>System Programming</li>
                     </ul>
+                    <div class="experience-tag">3+ years</div>
                 </div>
-                <div class="skill-card">
+                <div class="skill-card" data-category="systems">
                     <div class="skill-icon"><i class="fab fa-linux"></i></div>
                     <h3>Linux/Unix</h3>
-                    <div class="progress-bar">
-                        <div class="progress" style="width: 80%"></div>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 80%"></div>
+                        </div>
+                        <div class="skill-level">Advanced</div>
                     </div>
                     <ul class="skill-details">
                         <li>Shell Scripting (Zsh)</li>
                         <li>System Administration</li>
                         <li>Debian & Kali Linux</li>
                     </ul>
+                    <div class="experience-tag">2+ years</div>
                 </div>
-                <div class="skill-card">
+                <div class="skill-card" data-category="security">
                     <div class="skill-icon"><i class="fas fa-shield-alt"></i></div>
                     <h3>Cybersecurity</h3>
-                    <div class="progress-bar">
-                        <div class="progress" style="width: 75%"></div>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 75%"></div>
+                        </div>
+                        <div class="skill-level">Intermediate</div>
                     </div>
                     <ul class="skill-details">
                         <li>Network Security</li>
                         <li>Vulnerability Assessment</li>
                         <li>Security Best Practices</li>
                     </ul>
+                    <div class="experience-tag">2+ years</div>
                 </div>
-                <div class="skill-card">
+                <div class="skill-card" data-category="programming">
                     <div class="skill-icon"><i class="fas fa-code"></i></div>
                     <h3>Web Development</h3>
-                    <div class="progress-bar">
-                        <div class="progress" style="width: 65%"></div>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 65%"></div>
+                        </div>
+                        <div class="skill-level">Intermediate</div>
                     </div>
                     <ul class="skill-details">
                         <li>HTML/CSS</li>
                         <li>JavaScript</li>
                         <li>WordPress</li>
                     </ul>
+                    <div class="experience-tag">1+ year</div>
                 </div>
             </div>
         </div>
@@ -423,7 +442,7 @@
         </div>
     </section>
 
-    <!-- Added certifications section -->
+    <!-- Certifications section -->
     <section id="certifications" class="certifications">
         <div class="container">
             <h2 class="section-title">Certifications & Training</h2>
@@ -451,7 +470,7 @@
                 </div>
 
                 <div class="cert-card">
-                    <div class="cert-logo"></div>
+                    <div class="cert-logo">
                         <i class="fas fa-bug"></i>
                     </div>
                     <div class="cert-content">
@@ -659,7 +678,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2023 Mohamed. Built with <i class="fas fa-heart"></i> and <i class="fas fa-coffee"></i></p>
+                <p>&copy; 2025 Mohamed. Built with <i class="fas fa-heart"></i> and <i class="fas fa-coffee"></i></p>
                 <p class="visitor-counter">You are visitor #<span id="visitorCount">1337</span> in the matrix</p>
             </div>
         </div>
@@ -667,6 +686,7 @@
 
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="theme.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
